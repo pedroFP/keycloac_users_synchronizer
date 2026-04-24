@@ -45,4 +45,6 @@ users = Keycloak::User.limit(10)
 
 user = users.first
 
+user_id = user.keycloak_id
+Keycloak::UserGroup.all(user_id: user.keycloak_id)
 ```
