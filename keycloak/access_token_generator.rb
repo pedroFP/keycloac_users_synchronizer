@@ -1,9 +1,16 @@
+# Manages Keycloak access token generation to request API endpoints
+#
+# @example
+#   token = Keycloak::AccessTokenGenerator.call
+
 class Keycloak::AccessTokenGenerator
   def self.call
-    new.access_token
+    new.generate_access_token
   end
 
-  def access_token
+  private
+
+  def generate_access_token
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = false # TODO: handle when envorionment is PRODUCTION
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE

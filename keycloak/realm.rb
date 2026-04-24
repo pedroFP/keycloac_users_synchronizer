@@ -1,7 +1,6 @@
 class Keycloak::Realm
-
   attr_reader :realm
-  
+
   def initialize(realm)
     @realm = realm
   end
@@ -18,6 +17,8 @@ class Keycloak::Realm
     response = http.request(request)
     JSON.parse(response.read_body)
   end
+
+  private
 
   def url
     base = ENV.fetch('KEYCLOAK_BASE_URL', 'http://localhost:8080')
