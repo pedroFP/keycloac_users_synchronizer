@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'irb'
+require 'irb/completion'
+require_relative '../keycloak/keycloak'
+
+puts "Keycloak console — all classes loaded."
+puts "  Keycloak::AccessTokenGenerator.call"
+puts "  Keycloak::Realm.new('myrealm').users"
+puts
+
+IRB.start(__FILE__)
