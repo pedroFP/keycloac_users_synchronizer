@@ -9,7 +9,6 @@ class UserProducer
   end
 
   def produce
-    # WIP: gem not installed nor cofigured
     Karafka.producer.produce_sync(topic: KAFKA_TOPIC, payload: @payload.to_json, key: @key)
   end
 end
