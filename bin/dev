@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+begin
+  require_relative '../main'
+rescue Bundler::GemNotFound, LoadError => e
+  puts
+  puts '  ------------------------------------------'
+  puts '  Missing gems — run the following first:'
+  puts
+  puts '    bundle install'
+  puts
+  puts "  Error: #{e.message}"
+  puts '  ------------------------------------------'
+  puts
+  exit 1
+end
+
+
+system 'bundle exec karafka server'
