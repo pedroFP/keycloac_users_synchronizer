@@ -7,3 +7,4 @@ gem 'openssl'
 gem 'uri'
 gem 'activemodel'
 gem 'dotenv'
+gem "karafka", ">= 2.5.0"
