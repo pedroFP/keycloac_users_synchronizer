@@ -7,8 +7,7 @@
 class Keycloak::User < Keycloak::UserApi
   include ModelSerializer
 
-  attr_accessor :groups,
-                :first_name,
+  attr_accessor :first_name,
                 :last_name,
                 :email,
                 :keycloak_id,
@@ -28,21 +27,25 @@ class Keycloak::User < Keycloak::UserApi
                 :company,
                 :parent,
                 :keycloak_ad_id,
-                :keycloak_ad_dn
+                :keycloak_ad_dn,
+                :groups
 
-  # TODO: build metho to fetch the users user_group
+  def groups
+    @groups ||= Keycloak::UserGroup.all(user_id: keycloak_id)
+  end
 
   private
 
   def self.init_from_params(params)
     user = new
 
-    # user.groups = group_info(params) # TODO: handle user groups
+    user.keycloak_id = params['id']
     user.first_name = params['firstName']
     user.last_name = params['lastName']
     user.email = params['email']
-    user.keycloak_id = params['id']
     user.user_enabled_status = params['enabled']
+
+    user.groups = Keycloak::UserGroup.all(user_id: params['id'])
 
     unless params['attributes'].nil?
       attributes = params['attributes']
