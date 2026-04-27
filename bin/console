@@ -5,7 +5,7 @@ require 'irb'
 require 'irb/completion'
 
 begin
-  require_relative '../keycloak'
+  require_relative '../main'
 rescue Bundler::GemNotFound, LoadError => e
   puts
   puts '  ------------------------------------------'
