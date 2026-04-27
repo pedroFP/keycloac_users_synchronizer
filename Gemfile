@@ -8,3 +8,5 @@ gem 'uri'
 gem 'activemodel'
 gem 'dotenv'
 gem "karafka", ">= 2.5.0"
+
+gem "pry", "~> 0.16.0"
