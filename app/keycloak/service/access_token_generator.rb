@@ -31,6 +31,8 @@ class Keycloak::AccessTokenGenerator
   end
 
   def body
+    # INFO: Can get access token eaither by username and password or by client-secret
+    # 
     # {
     #   client_id: ENV.fetch('KEYCLOAK_CLIENT_ID', 'admin-cli'),
     #   username: ENV.fetch('KEYCLOAK_ADMIN_USERNAME'),
