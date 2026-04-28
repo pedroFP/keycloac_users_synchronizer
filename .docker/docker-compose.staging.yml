@@ -46,6 +46,6 @@ services:
         limits:
           cpus: '2'
           memory: 500m
-networks:           
-  kafka_network:    
-    external: true  
+networks:
+  kafka_network:
+    external: true
