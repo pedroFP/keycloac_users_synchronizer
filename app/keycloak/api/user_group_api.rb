@@ -29,7 +29,6 @@ class Keycloak::UserGroupApi
       JSON.parse(response.read_body)
     end
 
-
     def init_from_params(_)
       raise "\n\nBuild `init_from_params` method in your class!\n"
     end

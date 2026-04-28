@@ -34,8 +34,6 @@ class Keycloak::User < Keycloak::UserApi
     @groups ||= Keycloak::UserGroup.all(user_id: keycloak_id)
   end
 
-  private
-
   def self.init_from_params(params)
     user = new
 
@@ -76,4 +74,3 @@ class Keycloak::User < Keycloak::UserApi
     user
   end
 end
-

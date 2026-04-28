@@ -5,7 +5,6 @@
 # command again or refer to the install templates available in the source codes
 require 'dotenv/load'
 
-
 ENV['KARAFKA_ENV'] ||= 'development'
 Bundler.require(:default, ENV['KARAFKA_ENV'])
 
@@ -19,8 +18,8 @@ APP_LOADER.eager_load
 
 class KarafkaApp < Karafka::App
   setup do |config|
-    config.kafka = { 'bootstrap.servers': ENV["KAFKA_BOOTSTRAP_SERVERS"] }
-    config.client_id = ENV["KAFKA_CLIENT_ID"]
+    config.kafka = { 'bootstrap.servers': ENV['KAFKA_BOOTSTRAP_SERVERS'] }
+    config.client_id = ENV['KAFKA_CLIENT_ID']
     # config.logger.level = ::Logger::WARN
 
     # IMPORTANT: Customize this group_id with your application name.
@@ -86,7 +85,6 @@ class KarafkaApp < Karafka::App
 
   # INFO: To test the that the producer is sending the messages you can create a custom consumer
   routes.draw do
-
     topic 'keycloak.users_sync' do
       config(partitions: 1, replication_factor: 1)
       consumer RequestUsersSyncConsumer

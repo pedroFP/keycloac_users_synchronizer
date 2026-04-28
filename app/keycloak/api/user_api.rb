@@ -8,8 +8,8 @@ class Keycloak::UserApi
       # INFO: `max` Maximum results size (defaults to 100)
       # https://www.keycloak.org/docs-api/latest/rest-api/index.html#_query_parameters_72
 
-      url = self.base_url
-      url_params = URI.decode_www_form(url.query || "") + { max: number }.to_a
+      url = base_url
+      url_params = URI.decode_www_form(url.query || '') + { max: number }.to_a
 
       define_singleton_method(:base_url) do
         url.query = URI.encode_www_form(url_params)
@@ -20,11 +20,11 @@ class Keycloak::UserApi
     end
 
     def where(params)
-      # INFO: refer to the docs to see which arguments are available 
+      # INFO: refer to the docs to see which arguments are available
       # https://www.keycloak.org/docs-api/latest/rest-api/index.html#_query_parameters_72
 
-      url = self.base_url
-      url_params = URI.decode_www_form(url.query || "") + params.to_a
+      url = base_url
+      url_params = URI.decode_www_form(url.query || '') + params.to_a
 
       define_singleton_method(:base_url) do
         url.query = URI.encode_www_form(url_params)
@@ -34,13 +34,12 @@ class Keycloak::UserApi
       self
     end
 
-
     def page(offset)
       # INFO: `first` is the Pagination offset
       # https://www.keycloak.org/docs-api/latest/rest-api/index.html#_query_parameters_72
 
-      url = self.base_url
-      url_params = URI.decode_www_form(url.query || "") + { first: offset }.to_a
+      url = base_url
+      url_params = URI.decode_www_form(url.query || '') + { first: offset }.to_a
 
       define_singleton_method(:base_url) do
         url.query = URI.encode_www_form(url_params)
@@ -91,7 +90,7 @@ class Keycloak::UserApi
     end
 
     def init_from_params
-      raise "Build `init_from_params` method in your class"
+      raise 'Build `init_from_params` method in your class'
     end
   end
 end

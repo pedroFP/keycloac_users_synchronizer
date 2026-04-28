@@ -1,4 +1,4 @@
-require "bundler/setup"
+require 'bundler/setup'
 
 require 'uri'
 require 'json'
@@ -9,7 +9,7 @@ require 'active_model'
 require 'karafka'
 # require 'pry'
 
-require_relative 'config/require_env_variables.rb'
+require_relative 'config/require_env_variables'
 require_relative 'util/keycloak_record_relation'
 require_relative 'util/model_serializer'
 require_relative 'karafka'
@@ -19,6 +19,4 @@ module Keycloak
   REALM = ENV.fetch('KEYCLOAK_REALM').freeze
 end
 
-
 Dir[File.join(__dir__, 'app', '**', '*.rb')].each { |f| require_relative f }
-
