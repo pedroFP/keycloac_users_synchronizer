@@ -12,3 +12,5 @@ gem 'uri'
 gem 'pry', '~> 0.16.0'
 
 gem 'rubocop', '~> 1.86'
+
+gem 'bundle-audit'
