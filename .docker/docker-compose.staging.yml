@@ -23,7 +23,8 @@ services:
       KAFKA_CLIENT_ID: ${KAFKA_CLIENT_ID}
       KARAFKA_ENV: ${KARAFKA_ENV}
     networks:
-      keycloak-users-synchronizer-network:
+      - keycloak-users-synchronizer-network
+      - kafka_network
     logging:
       driver: json-file
       options:
@@ -49,3 +50,5 @@ services:
 networks:
   keycloak-users-synchronizer-network:
     name: ${APP_NAME}_network_${CI_COMMIT_SHORT_SHA}
+  kafka_network:
+    driver: bridge
