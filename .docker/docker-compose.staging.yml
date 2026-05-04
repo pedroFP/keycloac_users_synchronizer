@@ -9,7 +9,6 @@ services:
     image: registryqa.aquaporservicos.pt:5000/keycloak-users-synchronizer-qa:latest
     command: bin/start
     environment: # Goes directly to ENV inside container (cachtes env from azure ci)
-      TZ: Europe/Lisbon
       KEYCLOAK_BASE_URL: ${KEYCLOAK_BASE_URL}
       KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
       KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}

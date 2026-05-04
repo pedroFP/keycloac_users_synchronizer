@@ -9,7 +9,6 @@ services:
     image: registry.aquaporservicos.pt:5000/keycloak_users_synchronizer:latest
     command: bin/start
     environment:
-      TZ: Europe/Lisbon
       KEYCLOAK_BASE_URL: ${KEYCLOAK_BASE_URL}
       KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
       KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}
