@@ -2,7 +2,7 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.6.1
     command: start-dev
-    container_name: keycloak
+    container_name: ${APP_NAME}_keycloak_${CI_COMMIT_SHORT_SHA}
     ports:
       - "127.0.0.1:8080:8080"
     environment:
@@ -13,7 +13,7 @@ services:
 
   kafka:
     image: apache/kafka:3.9.0
-    container_name: kafka
+    container_name: ${APP_NAME}_kafka_${CI_COMMIT_SHORT_SHA}
     ports:
       - "9092:9092"
     volumes:
