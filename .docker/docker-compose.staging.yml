@@ -49,6 +49,6 @@ services:
           memory: 500m
 networks:
   keycloak-users-synchronizer-network:
-    name: ${APP_NAME}_network_${CI_COMMIT_SHORT_SHA}
+    external: true
   kafka_network:
-    driver: bridge
+    external: true

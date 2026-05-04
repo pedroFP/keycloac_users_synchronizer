@@ -8,6 +8,9 @@ services:
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_BOOTSTRAP_ADMIN_USERNAME}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_BOOTSTRAP_ADMIN_PASSWORD}
+    networks:
+     - keycloak-users-synchronizer-network
+
   kafka:
     image: apache/kafka:3.9.0
     container_name: kafka
@@ -47,6 +50,8 @@ services:
       timeout: 10s
       retries: 10
       start_period: 30s
+    networks:
+      - keycloak-users-synchronizer-network
 
   keycloak-users-synchronizer:
     build:
@@ -55,8 +60,8 @@ services:
       args: # Goes to dockerfile ARGS (needs to have $ARG to catch this value)
         - APP_USER_GID=1010 # group should be created in host with: sudo groupadd -g 1010 app_group
         - APP_USER_UID=1011 # user should be created in host with: sudo useradd -r -u 1011 -g app_group app_user
-    image: keycloak-users-synchronizer
-    container_name: keycloak-users-synchronizer
+    image: ${APP_NAME}_${CI_COMMIT_SHORT_SHA}
+    container_name: ${APP_NAME}_${CI_COMMIT_SHORT_SHA}
     environment:
       KEYCLOAK_BASE_URL: ${KEYCLOAK_BASE_URL}
       KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
@@ -74,7 +79,13 @@ services:
         condition: service_healthy
       keycloak:
         condition: service_started
+    networks:
+      - keycloak-users-synchronizer-network
 
 volumes:
   kafka_data:
     driver: local
+
+networks:
+  keycloak-users-synchronizer-network:
+    name: ${APP_NAME}_network_${CI_COMMIT_SHORT_SHA}
