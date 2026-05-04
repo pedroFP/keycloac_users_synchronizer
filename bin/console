@@ -42,7 +42,7 @@ puts box_line('    Keycloak::User')
 puts box_line('    Keycloak::UserGroup')
 puts box_line('    Keycloak::UserApi')
 puts box_line('    Keycloak::UserGroupApi')
-puts box_line('    Keycloak::Service::AccessTokenGenerator')
+puts box_line('    Keycloak::AccessTokenGenerator')
 puts box_line
 puts box_line('    SyncKeycloakUsers')
 puts box_line
